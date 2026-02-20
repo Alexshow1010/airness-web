@@ -1,0 +1,121 @@
+/* 整體頁面 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+/* 標題與副標題 */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.7;
+  margin-bottom: 70px;
+}
+
+/* 區塊排版（左右交錯） */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 0;
+  gap: 40px;
+  min-height: 320px; /* 確保圖片沒載到也不會跑版 */
+}
+
+/* 左右圖片包裹 */
+.imageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* 固定圖片樣式 */
+.brainImage {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* 文字（紅區） */
+.textBlockRed {
+  flex: 1;
+  text-align: left;
+}
+
+.textBlockRed h2 {
+  color: #ff4d4d;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+/* 文字（藍區） */
+.textBlockBlue {
+  flex: 1;
+  text-align: left;
+}
+
+.textBlockBlue h2 {
+  color: #4da6ff;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+/* 共用的列表樣式 */
+.textBlockRed ul,
+.textBlockBlue ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.textBlockRed li,
+.textBlockBlue li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* 下方大段文字與提示 */
+.longTextBlock {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.tipBox {
+  margin: 30px auto;
+  padding: 15px 25px;
+  border: 1px solid #4da6ff;
+  border-radius: 12px;
+  display: inline-block;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* 下一步按鈕 */
+.nextButton {
+  margin-top: 40px;
+  background: #0a84ff;
+  padding: 14px 38px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.25s;
+  color: white;
+}
+
+.nextButton:hover {
+  background: #0066cc;
+}

@@ -1,0 +1,43 @@
+{
+  "title_main": "See the contradiction first,\nthen decide whether to believe.",
+  "subtitle_main": "Pause for a moment—your mind will spot what doesn't add up.",
+
+  "investment": {
+    "category": "Investment Scam",
+    "lines": [
+      "If it's so easy to make money, why isn't he making it himself?\nWhy does he need you?",
+      "If profit is guaranteed, that's insider trading—not investment advice.",
+      "Anyone who tells you to “keep it secret” is afraid the truth will break the spell.",
+      "When returns are always higher than risks, it's because the risks are all on you.",
+      "An investment that needs you to constantly add more—who is really being invested in?",
+      "People who truly make money in the market don’t earn it by recruiting students."
+    ]
+  },
+
+  "romance": {
+    "category": "Romance Scam",
+    "lines": [
+      "Someone who loves you but can never meet you—does that make sense?",
+      "A person who won’t even take a call claims to understand you the most?",
+      "The faster someone pushes the relationship, the more they’re chasing an opportunity—not you.",
+      "Someone who shows up only when you're vulnerable isn’t caring for you.",
+      "A genuine partner won’t ask you for money, much less put you at risk.",
+      "If you can’t even verify their basic identity, are you sure they exist?"
+    ]
+  },
+
+  "impersonation": {
+    "category": "Impersonation Scam (Government / Police / Bank)",
+    "lines": [
+      "The government will never send you to an ATM. Only scammers do that.",
+      "Real police officers will find you in person, not pressure you over the phone.",
+      "Banks will never ask for your verification code. That code protects you.",
+      "People who insist you must act “right now” don’t want you to think.",
+      "Real issues come with official documents, not LINE messages.",
+      "A real account doesn’t fear verification—the ones that do are the problem."
+    ]
+  },
+
+  "button_home": "Back to Home",
+  "button_download": "Download Rebreath AIRNESS (Android)"
+}

@@ -1,0 +1,116 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #06030d;
+  color: white;
+}
+
+/* Title */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+/* Subtitle */
+.subtitle {
+  margin-top: 12px;
+  font-size: 24px;
+  opacity: 0.6;
+  text-align: center;
+  color: #b29cff;
+}
+
+/* Section */
+.section {
+  width: 100%;
+  max-width: 680px;
+  margin-top: 50px;
+}
+
+/* Category label */
+.category {
+  font-size: 21px;
+  opacity: 0.45;
+  margin-bottom: 14px;
+  padding-left: 4px;
+}
+
+/* Card */
+.card {
+  background: rgba(100, 60, 200, 0.18);
+  border: 1px solid rgba(180, 140, 255, 0.4);
+  padding: 18px 20px;
+  border-radius: 18px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.55;
+  box-shadow: 0 0 12px rgba(150, 110, 255, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+/* Buttons */
+.buttonGroup {
+  margin-top: 60px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.primaryButton {
+  width: 100%;
+  padding: 16px;
+  background: #a387ff;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 28px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 2px solid #b29cff;
+  color: #b29cff;
+  font-size: 18px;
+  border-radius: 28px;
+  cursor: pointer;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  opacity: 0.85;
+}
+/* Google Play Button */
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 4px;
+
+  background: #6f4dff;
+  border-radius: 26px;
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.playButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
