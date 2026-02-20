@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,13 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-Hant">
       <head>
-        {/* 正確 AdSense 驗證碼（你提供的那組） */}
-        <Script
+        {/* 將 AdSense code 直接輸出成純 HTML（Google 才抓得到） */}
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4734323017789470"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        ></script>
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
