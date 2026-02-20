@@ -22,8 +22,12 @@ export default function IntroPage() {
         justifyContent: "center",
         opacity: visible ? 1 : 0,
         transition: "opacity 1.5s ease-in-out",
-        fontSize: "2rem",
-        fontWeight: "600",
+
+        // 加粗 + 白色 + 輕微字距強化存在感
+        color: "#ffffff",
+        fontSize: "2.3rem",
+        fontWeight: "700",
+        letterSpacing: "0.12rem",
       }}
     >
       回息 / AIRNESS
