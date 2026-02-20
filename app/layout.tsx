@@ -18,18 +18,14 @@ export const metadata: Metadata = {
   description: "Breathing, scam protection, awareness system",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-Hant">
       <head>
-        {/* Google AdSense Verification Script */}
+        {/* 正確 AdSense 驗證碼（你提供的那組） */}
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4734323017798470"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4734323017789470"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
