@@ -1,0 +1,126 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 20px 120px;
+  background: #06030d;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.header {
+  text-align: center;
+  max-width: 680px;
+  margin-bottom: 60px;
+}
+
+/* 定義黃金呼吸燈動畫 (4秒一循環，模擬深呼吸) */
+@keyframes golden-breathe {
+  0% {
+    box-shadow: 
+      0 0 15px rgba(235, 180, 50, 0.25),   
+      inset 0 0 10px rgba(235, 180, 50, 0.15);
+    text-shadow: 0 0 6px rgba(235, 180, 50, 0.4);
+    background: rgba(235, 180, 50, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 35px rgba(235, 180, 50, 0.65),   
+      inset 0 0 18px rgba(235, 180, 50, 0.35);
+    text-shadow: 0 0 14px rgba(235, 180, 50, 0.9);
+    background: rgba(235, 180, 50, 0.2);
+  }
+  100% {
+    box-shadow: 
+      0 0 15px rgba(235, 180, 50, 0.25),   
+      inset 0 0 10px rgba(235, 180, 50, 0.15);
+    text-shadow: 0 0 6px rgba(235, 180, 50, 0.4);
+    background: rgba(235, 180, 50, 0.1);
+  }
+}
+
+/* 升級後的認知錨點標籤 */
+.tag {
+  display: inline-block;
+  font-size: 18px; /* 放大尺寸，提升第一眼視覺權重 */
+  font-weight: 700;
+  letter-spacing: 4px; /* 稍微拉開字距，增加莊重感 */
+  color: #ffeba8; /* 核心文字保持明亮 */
+  
+  /* 玻璃擬態 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* 邊框與內外留白 */
+  border: 1px solid rgba(235, 180, 50, 0.6);
+  border-radius: 40px;
+  padding: 12px 30px; /* 增加呼吸空間 */
+  margin-bottom: 30px; /* 拉開與主標題的距離 */
+  
+  /* 套用呼吸燈動畫，無限循環，平滑過渡 */
+  animation: golden-breathe 4s ease-in-out infinite;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #e5c877;
+  opacity: 0.8;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.card:hover {
+  border-color: rgba(0, 200, 150, 0.4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 200, 150, 0.15);
+}
+
+.card h2 {
+  font-size: 24px;
+  color: #00c896;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.card p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 16px;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card strong {
+  color: #ebb432; 
+  font-weight: 600;
+}

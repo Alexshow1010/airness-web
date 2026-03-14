@@ -1,116 +1,259 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  padding: 40px 20px 100px;
+  padding: 60px 20px 80px; 
+  background: #06030d;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #06030d;
-  color: white;
+  overflow-x: hidden;
 }
 
-/* Title */
+/* --- 頂部導覽列：左右排開 --- */
+.topNav {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.backButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #b29cff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(178, 156, 255, 0.15);
+}
+
+.langButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.langButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.globeIcon {
+  font-size: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 .title {
   font-size: 32px;
   font-weight: 700;
-  text-align: center;
-  margin-top: 20px;
-  line-height: 1.4;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
 }
 
-/* Subtitle */
 .subtitle {
-  margin-top: 12px;
-  font-size: 24px;
-  opacity: 0.6;
-  text-align: center;
-  color: #b29cff;
+  font-size: 18px;
+  color: #a387ff;
+  opacity: 0.7;
 }
 
-/* Section */
-.section {
+.listContainer {
   width: 100%;
   max-width: 680px;
-  margin-top: 50px;
-}
-
-/* Category label */
-.category {
-  font-size: 21px;
-  opacity: 0.45;
-  margin-bottom: 14px;
-  padding-left: 4px;
-}
-
-/* Card */
-.card {
-  background: rgba(100, 60, 200, 0.18);
-  border: 1px solid rgba(180, 140, 255, 0.4);
-  padding: 18px 20px;
-  border-radius: 18px;
-  margin-bottom: 16px;
-  font-size: 18px;
-  line-height: 1.55;
-  box-shadow: 0 0 12px rgba(150, 110, 255, 0.35);
-  backdrop-filter: blur(4px);
-}
-
-/* Buttons */
-.buttonGroup {
-  margin-top: 60px;
-  width: 100%;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.primaryButton {
+.card {
+  display: flex;
+  align-items: center;
   width: 100%;
-  padding: 16px;
-  background: #a387ff;
-  border: none;
-  color: white;
-  font-size: 18px;
-  border-radius: 28px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.secondaryButton {
-  width: 100%;
-  padding: 16px;
-  background: transparent;
-  border: 2px solid #b29cff;
-  color: #b29cff;
-  font-size: 18px;
-  border-radius: 28px;
-  cursor: pointer;
+.iconBox {
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
 }
 
-.primaryButton:hover,
-.secondaryButton:hover {
-  opacity: 0.85;
+.iconBox svg {
+  width: 100%;
+  height: 100%;
 }
-/* Google Play Button */
+
+.textContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.cardDesc {
+  font-size: 14px;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card:hover .chevron {
+  opacity: 1;
+}
+
+.themeInvestment:hover {
+  background: rgba(235, 180, 50, 0.08);
+  border-color: rgba(235, 180, 50, 0.5);
+  box-shadow: 0 0 20px rgba(235, 180, 50, 0.15);
+}
+.themeInvestment .iconBox { color: #ebb432; }
+.themeInvestment:hover .cardTitle { color: #ebb432; }
+
+.themeRomance:hover {
+  background: rgba(255, 77, 109, 0.08);
+  border-color: rgba(255, 77, 109, 0.5);
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.15);
+}
+.themeRomance .iconBox { color: #ff4d6d; }
+.themeRomance:hover .cardTitle { color: #ff4d6d; }
+
+.themeJob:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+}
+.themeJob .iconBox { color: #00d4ff; }
+.themeJob:hover .cardTitle { color: #00d4ff; }
+
+.themeAuthority:hover {
+  background: rgba(255, 146, 43, 0.08);
+  border-color: rgba(255, 146, 43, 0.5);
+  box-shadow: 0 0 20px rgba(255, 146, 43, 0.15);
+}
+.themeAuthority .iconBox { color: #ff922b; }
+.themeAuthority:hover .cardTitle { color: #ff922b; }
+
+.themeCooperation {
+}
+.themeCooperation:hover {
+  background: rgba(0, 255, 157, 0.08);
+  border-color: rgba(0, 255, 157, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.15);
+}
+.themeCooperation .iconBox { color: #c280ff; }
+.themeCooperation:hover .iconBox { color: #00ff9d; }
+.themeCooperation:hover .cardTitle { color: #00ff9d; }
+
+/* --- 底部區域更新：改為 Column 讓元素上下排列 --- */
+.footer {
+  margin-top: 60px;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column; /* 加上這行，讓按鈕跟文字上下排 */
+  align-items: center;    /* 左右置中 */
+  justify-content: center;
+}
+
 .playButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   width: 100%;
-  padding: 14px 0;
-  margin-top: 4px;
-
-  background: #6f4dff;
-  border-radius: 26px;
+  max-width: 400px;
+  padding: 16px 0;
+  background: linear-gradient(135deg, #6f4dff, #4da6ff);
+  border-radius: 30px;
   text-decoration: none;
   color: white;
-  font-size: 17px;
-  font-weight: 500;
-  transition: 0.2s ease;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(111, 77, 255, 0.3);
 }
 
 .playButton:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(111, 77, 255, 0.4);
+}
+
+.privacyLinkWrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.privacyLink {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.privacyLink:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
