@@ -1,145 +1,117 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; 
+import ChromaGrid, { ChromaItem } from '../components/ChromaGrid';
+import ActionSection from './ActionSection';
+import OriginSection from './OriginSection';
+import ScienceSection from './ScienceSection';
+import RestorationSection from './RestorationSection';
 
 export default function PurposePage() {
-  const router = useRouter();
+  const router = useRouter(); 
+  const [activeChapter, setActiveChapter] = useState<string | null>(null);
+
+  const chapterItems: ChromaItem[] = [
+    {
+      id: 'action',
+      image: '/brains/red.png', 
+      title: '第一章：真相篇',
+      subtitle: '詐騙不是你笨，是大腦被接管了。',
+      handle: '01 / ACTION',
+      borderColor: '#EF4444',
+      gradient: 'linear-gradient(145deg, #450a0a, #000)'
+    },
+    {
+      id: 'origin',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800', 
+      title: '第二章：起源篇',
+      subtitle: '從傷口長出來的防線，幫人找回判斷力。',
+      handle: '02 / ORIGIN',
+      borderColor: '#9CA3AF',
+      gradient: 'linear-gradient(210deg, #1f2937, #000)'
+    },
+    {
+      id: 'science',
+      image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=800', 
+      title: '第三章：科學篇',
+      subtitle: '杏仁核劫持的物理現場與自律神經。',
+      handle: '03 / SCIENCE',
+      borderColor: '#8B5CF6',
+      gradient: 'linear-gradient(165deg, #2e1065, #000)'
+    },
+    {
+      id: 'restoration',
+      image: '/brains/blue.png', 
+      title: '第四章：修復篇',
+      subtitle: '拆解詐騙五階段，按下神經系統停止鍵。',
+      handle: '04 / RESTORE',
+      borderColor: '#06B6D4',
+      gradient: 'linear-gradient(195deg, #083344, #000)'
+    }
+  ];
+
+  const renderActiveChapter = () => {
+    switch (activeChapter) {
+      case 'action': return <ActionSection />;
+      case 'origin': return <OriginSection />;
+      case 'science': return <ScienceSection />;
+      case 'restoration': return <RestorationSection />;
+      default: return null;
+    }
+  };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#000",
-        minHeight: "100vh",
-        padding: "60px 20px",
-        color: "#fff",
-        textAlign: "center",
-        position: "relative",
-      }}
-    >
-      {/* Language Switch */}
-      <div style={{ position: "absolute", top: 20, right: 20 }}>
-        <button
-          onClick={() => router.push("/purpose-en")}
-          style={{
-            padding: "8px 16px",
-            background: "rgba(255,255,255,0.15)",
-            border: "1px solid rgba(255,255,255,0.3)",
-            borderRadius: "20px",
-            color: "#fff",
-            cursor: "pointer",
-            fontSize: "0.9rem",
-          }}
-        >
-          ENGLISH
-        </button>
-      </div>
+    <main className="w-full min-h-screen bg-[#02040a] relative">
+      
+      {!activeChapter && (
+        <div className="w-full min-h-screen flex flex-col items-center justify-center py-20 relative">
+          
+          {/* 💥 裝上切換到英文版大廳的按鈕 */}
+          <div className="absolute top-10 right-10 z-[9999]">
+            <button
+              onClick={() => router.push("/purpose-en")}
+              className="px-5 py-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full text-white tracking-widest text-sm transition-colors cursor-pointer"
+            >
+              ENGLISH
+            </button>
+          </div>
 
-      {/* 主標題 */}
-      <h1 style={{ fontSize: "2.6rem", fontWeight: "700", marginBottom: "10px" }}>
-        詐騙不是你笨，是你的神經被劫持了。
-      </h1>
-      <p style={{ opacity: 0.7, marginBottom: "60px", fontSize: "1.2rem" }}>
-        慢下來，大腦就會重新亮起來。
-      </p>
-
-      {/* 第一組（紅腦） */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: "60px",
-          marginBottom: "80px",
-          flexWrap: "wrap",
-        }}
-      >
-        <Image
-          src="/brains/red.png"
-          alt="紅色恐慌大腦"
-          width={450}
-          height={280}
-          style={{ borderRadius: "12px" }}
-        />
-
-        <div style={{ textAlign: "left", maxWidth: "420px" }}>
-          <h2 style={{ fontSize: "1.9rem", color: "#ff4d4d", fontWeight: "700" }}>
-            恐慌時，你的大腦其實被接管了。
-          </h2>
-
-          <ul style={{ fontSize: "1.2rem", lineHeight: "2rem", marginTop: "10px" }}>
-            <li>杏仁核暴衝，情緒接管大腦</li>
-            <li>判斷力暫時被切斷</li>
-            <li>詐騙利用你「急著做決定」的瞬間</li>
-          </ul>
+          <div className="text-center mb-16 z-10">
+            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4">
+              回息解密檔案
+            </h1>
+            <p className="text-gray-400 tracking-[0.2em] uppercase text-sm">
+              選擇章節，深入理解大腦劫持現象
+            </p>
+          </div>
+          
+          <div className="w-full max-w-[750px] mx-auto">
+            <ChromaGrid 
+              items={chapterItems} 
+              onItemClick={(id) => setActiveChapter(id)} 
+            />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* 第二組（藍腦） */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: "60px",
-          marginBottom: "90px",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ textAlign: "right", maxWidth: "420px" }}>
-          <h2 style={{ fontSize: "1.9rem", color: "#4da6ff", fontWeight: "700" }}>
-            深呼吸，能讓你奪回判斷權。
-          </h2>
+      {activeChapter && (
+        <div className="w-full relative animation-fade-in">
+          
+          <div className="fixed top-6 left-6 z-[9999]">
+            <button 
+              onClick={() => setActiveChapter(null)}
+              className="px-6 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 rounded-full text-white font-medium tracking-wider transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+            >
+              <span className="text-xl leading-none">←</span> 返回目錄
+            </button>
+          </div>
 
-          <ul style={{ fontSize: "1.2rem", lineHeight: "2rem", marginTop: "10px" }}>
-            <li>前額葉重新啟動，恢復判斷力</li>
-            <li>注意力回到自己身上</li>
-            <li>詐騙節奏瞬間失效</li>
-          </ul>
+          {renderActiveChapter()}
+          
         </div>
+      )}
 
-        <Image
-          src="/brains/blue.png"
-          alt="藍色冷靜大腦"
-          width={450}
-          height={280}
-          style={{ borderRadius: "12px" }}
-        />
-      </div>
-
-      {/* 小提醒 */}
-      <div
-        style={{
-          margin: "0 auto 30px auto",
-          padding: "18px 30px",
-          borderRadius: "14px",
-          background: "rgba(120, 80, 255, 0.25)",
-          boxShadow: "0 0 25px rgba(150, 100, 255, 0.55)",
-          maxWidth: "650px",
-        }}
-      >
-        <p style={{ fontSize: "1.3rem", lineHeight: "2rem" }}>
-          你的反應不是你的錯，而是神經系統的自動模式。
-          <br />
-          只要花 10 秒深呼吸，大腦會重新拿回控制權。
-        </p>
-      </div>
-
-      <button
-        onClick={() => router.push("/breathing")}
-        style={{
-          marginTop: "10px",
-          backgroundColor: "#007bff",
-          padding: "16px 34px",
-          borderRadius: "30px",
-          border: "none",
-          fontSize: "1.3rem",
-          fontWeight: "600",
-          cursor: "pointer",
-        }}
-      >
-        開始 10 秒呼吸練習 →
-      </button>
-    </div>
+    </main>
   );
 }

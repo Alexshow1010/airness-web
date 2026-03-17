@@ -1,144 +1,119 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; 
+import ChromaGrid, { ChromaItem } from '../components/ChromaGrid';
 
-export default function PurposeENPage() {
-  const router = useRouter();
+// 💥 修正點 1：這裡的引入路徑全部加上 En，對應你資料夾裡正確的檔名
+import ActionSectionEn from './ActionSectionEn';
+import OriginSectionEn from './OriginSectionEn';
+import ScienceSectionEn from './ScienceSectionEn';
+import RestorationSectionEn from './RestorationSectionEn';
+
+export default function PurposeEnPage() {
+  const router = useRouter(); 
+  const [activeChapter, setActiveChapter] = useState<string | null>(null);
+
+  const chapterItems: ChromaItem[] = [
+    {
+      id: 'action',
+      image: '/brains/red.png', 
+      title: 'Chapter 1: The Truth',
+      subtitle: 'It’s not foolishness; it’s a hijacked brain.',
+      handle: '01 / ACTION',
+      borderColor: '#EF4444',
+      gradient: 'linear-gradient(145deg, #450a0a, #000)'
+    },
+    {
+      id: 'origin',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800', 
+      title: 'Chapter 2: The Origin',
+      subtitle: 'A defense line grown from the wound.',
+      handle: '02 / ORIGIN',
+      borderColor: '#9CA3AF',
+      gradient: 'linear-gradient(210deg, #1f2937, #000)'
+    },
+    {
+      id: 'science',
+      image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=800', 
+      title: 'Chapter 3: The Science',
+      subtitle: 'The physical reality of an Amygdala Hijack.',
+      handle: '03 / SCIENCE',
+      borderColor: '#8B5CF6',
+      gradient: 'linear-gradient(165deg, #2e1065, #000)'
+    },
+    {
+      id: 'restoration',
+      image: '/brains/blue.png', 
+      title: 'Chapter 4: Restoration',
+      subtitle: 'Deconstructing the 5 stages of scams.',
+      handle: '04 / RESTORE',
+      borderColor: '#06B6D4',
+      gradient: 'linear-gradient(195deg, #083344, #000)'
+    }
+  ];
+
+  // 💥 修正點 2：這裡渲染的組件也要加上 En
+  const renderActiveChapter = () => {
+    switch (activeChapter) {
+      case 'action': return <ActionSectionEn />;
+      case 'origin': return <OriginSectionEn />;
+      case 'science': return <ScienceSectionEn />;
+      case 'restoration': return <RestorationSectionEn />;
+      default: return null;
+    }
+  };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#000",
-        minHeight: "100vh",
-        padding: "60px 20px",
-        color: "#fff",
-        textAlign: "center",
-        position: "relative",
-      }}
-    >
-      {/* Language Switch */}
-      <div style={{ position: "absolute", top: 20, right: 20 }}>
-        <button
-          onClick={() => router.push("/purpose")}
-          style={{
-            padding: "8px 16px",
-            background: "rgba(255,255,255,0.15)",
-            border: "1px solid rgba(255,255,255,0.3)",
-            borderRadius: "20px",
-            color: "#fff",
-            cursor: "pointer",
-            fontSize: "0.9rem",
-          }}
-        >
-          中文
-        </button>
-      </div>
+    <main className="w-full min-h-screen bg-[#02040a] relative">
+      
+      {!activeChapter && (
+        <div className="w-full min-h-screen flex flex-col items-center justify-center py-20 relative">
+          
+          <div className="absolute top-10 right-10 z-50">
+            <button
+              onClick={() => router.push("/purpose")}
+              className="px-5 py-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full text-white tracking-widest text-sm transition-colors cursor-pointer"
+            >
+              中文
+            </button>
+          </div>
 
-      <h1 style={{ fontSize: "2.6rem", fontWeight: "700", marginBottom: "10px" }}>
-        Scams don’t fool you — they hijack your brain.
-      </h1>
-
-      <p style={{ opacity: 0.7, marginBottom: "60px", fontSize: "1.2rem" }}>
-        Slow down, and your brain turns back on.
-      </p>
-
-      {/* Red Brain Section */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: "60px",
-          marginBottom: "80px",
-          flexWrap: "wrap",
-        }}
-      >
-        <Image
-          src="/brains/en_red.png"
-          alt="Emotional Hijack Brain"
-          width={450}
-          height={280}
-          style={{ borderRadius: "12px" }}
-        />
-
-        <div style={{ textAlign: "left", maxWidth: "420px" }}>
-          <h2 style={{ fontSize: "1.9rem", color: "#ff4d4d", fontWeight: "700" }}>
-            When fear spikes, your brain gets hijacked.
-          </h2>
-
-          <ul style={{ fontSize: "1.2rem", lineHeight: "2rem", marginTop: "10px" }}>
-            <li>Amygdala takes over</li>
-            <li>Critical thinking shuts down</li>
-            <li>Scammers strike when urgency hits</li>
-          </ul>
+          <div className="text-center mb-16 z-10">
+            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4 uppercase">
+              The AIRNESS Files
+            </h1>
+            <p className="text-gray-400 tracking-[0.2em] uppercase text-sm">
+              Select a chapter to decode the brain hijack
+            </p>
+          </div>
+          
+          <div className="w-full max-w-[750px] mx-auto">
+            <ChromaGrid 
+              items={chapterItems} 
+              onItemClick={(id) => setActiveChapter(id)} 
+            />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Blue Brain Section */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: "60px",
-          marginBottom: "90px",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ textAlign: "right", maxWidth: "420px" }}>
-          <h2 style={{ fontSize: "1.9rem", color: "#4da6ff", fontWeight: "700" }}>
-            Deep breathing gives your judgment back.
-          </h2>
+      {activeChapter && (
+        <div className="w-full relative animation-fade-in">
+          
+          <div className="fixed top-6 left-6 z-[9999]">
+            <button 
+              onClick={() => setActiveChapter(null)}
+              className="px-6 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 rounded-full text-white font-medium tracking-wider transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+            >
+              <span className="text-xl leading-none">←</span> Back to Menu
+            </button>
+          </div>
 
-          <ul style={{ fontSize: "1.2rem", lineHeight: "2rem", marginTop: "10px" }}>
-            <li>Prefrontal cortex reactivates</li>
-            <li>Your attention returns to you</li>
-            <li>The scammer’s pressure loses power</li>
-          </ul>
+          {renderActiveChapter()}
+          
         </div>
+      )}
 
-        <Image
-          src="/brains/en_blue.png"
-          alt="Calm Analysis Brain"
-          width={450}
-          height={280}
-          style={{ borderRadius: "12px" }}
-        />
-      </div>
-
-      <div
-        style={{
-          margin: "0 auto 30px auto",
-          padding: "18px 30px",
-          borderRadius: "14px",
-          background: "rgba(120, 80, 255, 0.25)",
-          boxShadow: "0 0 25px rgba(150, 100, 255, 0.55)",
-          maxWidth: "650px",
-        }}
-      >
-        <p style={{ fontSize: "1.3rem", lineHeight: "2rem" }}>
-          Your reaction isn’t your fault — it’s the nervous system’s autopilot.
-          <br />
-          Just 10 seconds of deep breathing restores control.
-        </p>
-      </div>
-
-      <button
-        onClick={() => router.push("/breathing")}
-        style={{
-          marginTop: "10px",
-          backgroundColor: "#007bff",
-          padding: "16px 34px",
-          borderRadius: "30px",
-          border: "none",
-          fontSize: "1.3rem",
-          fontWeight: "600",
-          cursor: "pointer",
-        }}
-      >
-        Start 10-Second Breathing →
-      </button>
-    </div>
+    </main>
   );
 }
