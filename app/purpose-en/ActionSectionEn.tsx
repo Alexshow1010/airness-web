@@ -23,7 +23,7 @@ export default function ActionSectionEn() {
           {/* 第一組（紅腦） */}
           <div className="flex flex-wrap justify-center items-start gap-16 mb-24">
             <Image
-              src="/brains/red.png"
+              src="/brains/en_red.png"
               alt="Panic Brain"
               width={450}
               height={280}
@@ -54,7 +54,7 @@ export default function ActionSectionEn() {
               </ul>
             </div>
             <Image
-              src="/brains/blue.png"
+              src="/brains/en_blue.png"
               alt="Calm Brain"
               width={450}
               height={280}
