@@ -4,7 +4,6 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./truth.module.css";
-// 引入你的翻譯 Hook 與 Cookie 設定，並加上 Lang 型別
 import { useTranslation } from "../../hooks/useTranslation";
 import { COOKIE_KEY, DEFAULT_LANG, type Lang } from "../../i18n";
 
@@ -12,28 +11,22 @@ export default function TruthHubPage() {
   const router = useRouter();
   const t = useTranslation();
   
-  // 明確告訴 TypeScript 這裡的狀態是 Lang 型別
   const [currentLang, setCurrentLang] = useState<Lang>(DEFAULT_LANG);
   const [mounted, setMounted] = useState(false);
 
-  // 網頁載入時，讀取當前的 Cookie 語系
   useEffect(() => {
     setMounted(true);
     const cookie = document.cookie
       .split("; ")
       .find((x) => x.startsWith(COOKIE_KEY + "="));
     if (cookie) {
-      // 加上 as Lang 轉型，解決 TS 報錯
       setCurrentLang(cookie.split("=")[1] as Lang);
     }
   }, []);
 
-  // 點擊按鈕時的切換邏輯
   const toggleLanguage = () => {
     const nextLang = currentLang === "en" ? "zh" : "en";
-    // 寫入新語系的 Cookie，設定保存期限為一年
     document.cookie = `${COOKIE_KEY}=${nextLang}; path=/; max-age=31536000`;
-    // 重新載入網頁，讓 useTranslation 抓取新語系
     window.location.reload();
   };
 
@@ -55,7 +48,6 @@ export default function TruthHubPage() {
     },
   };
 
-  // 五大分類資料設定
   const scamTypes = [
     {
       id: "investment",
@@ -125,7 +117,6 @@ export default function TruthHubPage() {
   return (
     <main className={styles.container}>
       
-      {/* 頂部導覽區：左側返回呼吸，右側切換語系 */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -136,7 +127,6 @@ export default function TruthHubPage() {
           {t("truth_back_btn")}
         </button>
 
-        {/* 確保載入完成才顯示按鈕，避免畫面閃爍 */}
         {mounted && (
           <button onClick={toggleLanguage} className={styles.langButton}>
             <span className={styles.globeIcon}>🌍</span>
@@ -145,7 +135,6 @@ export default function TruthHubPage() {
         )}
       </motion.div>
 
-      {/* 標題區 */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -156,7 +145,6 @@ export default function TruthHubPage() {
         <p className={styles.subtitle}>{t("truth_hub_subtitle")}</p>
       </motion.div>
 
-      {/* 選單列表區 */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -186,23 +174,13 @@ export default function TruthHubPage() {
         ))}
       </motion.div>
 
-      {/* 底部按鈕區與隱私權連結 */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
         className={styles.footer}
       >
-        <a
-          href="https://play.google.com/store/apps/details?id=com.airenss.rebreath&pcampaignid=web_share"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.playButton}
-        >
-          {t("truth_download_btn")}
-        </a>
-
-        {/* 低調的隱私權政策連結 */}
+        {/* 💥 下載按鈕已移除，僅保留隱私權連結 */}
         <div className={styles.privacyLinkWrapper}>
           <a href="/privacy" className={styles.privacyLink}>
             {t("privacy_title")}
