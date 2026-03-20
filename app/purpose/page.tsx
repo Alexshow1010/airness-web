@@ -1,18 +1,32 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import ChromaGrid, { ChromaItem } from '../components/ChromaGrid';
+
 import ActionSection from './ActionSection';
 import OriginSection from './OriginSection';
 import ScienceSection from './ScienceSection';
 import RestorationSection from './RestorationSection';
+import ImpactSection from '../components/ImpactSection'; 
+import NeuralBackground from '../components/NeuralBackground';
+import PurposeAimSection from '../components/PurposeAimSection'; 
+import ICASection from './ICASection';
 
 export default function PurposePage() {
   const router = useRouter(); 
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
 
   const chapterItems: ChromaItem[] = [
+    {
+      id: 'purpose-aim',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800', 
+      title: '了解回息的目的',
+      subtitle: '別人的宣導是資訊，這裡是你的大腦狀態切換介面。',
+      handle: 'AIM / REBREATH',
+      borderColor: '#4da6ff', 
+      gradient: 'linear-gradient(145deg, #0d2a45, #000)'
+    },
     {
       id: 'action',
       image: '/brains/red.png', 
@@ -48,56 +62,74 @@ export default function PurposePage() {
       handle: '04 / RESTORE',
       borderColor: '#06B6D4',
       gradient: 'linear-gradient(195deg, #083344, #000)'
+    },
+    {
+      id: 'impact',
+      image: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&q=80&w=800', 
+      title: '第五章：漣漪篇',
+      subtitle: '齒輪轉動後的代價，從被害到加害的無盡漣漪。',
+      handle: '05 / IMPACT',
+      borderColor: '#ffaa00', 
+      gradient: 'linear-gradient(145deg, #4a2e00, #000)'
+    },
+    {
+      id: 'ica',
+      // 💥 換成你剛剛放進 public 的本地圖片
+      image: '/ifcomeagian.png', 
+      title: '第六章：如果那天我拒絕了', // 英文版是 'Chapter 6: If I Had Refused'
+      subtitle: '那一秒深呼吸，強行拉開命運的活栓。',
+      handle: '06 / I.C.A',
+      borderColor: '#10B981',
+      gradient: 'linear-gradient(145deg, #064e3b, #000)'
     }
   ];
 
   const renderActiveChapter = () => {
     switch (activeChapter) {
+      case 'purpose-aim': return <PurposeAimSection />;
       case 'action': return <ActionSection />;
       case 'origin': return <OriginSection />;
       case 'science': return <ScienceSection />;
       case 'restoration': return <RestorationSection />;
+      case 'impact': return <ImpactSection />;
+      case 'ica': return <ICASection />;
       default: return null;
     }
   };
 
   return (
     <main className="w-full min-h-screen bg-[#02040a] relative">
-      
       {!activeChapter && (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center py-20 relative">
-          
-          {/* 💥 裝上切換到英文版大廳的按鈕 */}
-          <div className="absolute top-10 right-10 z-[9999]">
+        <NeuralBackground className="min-h-screen w-full flex flex-col relative animation-fade-in">
+          <div className="fixed top-10 right-10 z-[9999]">
             <button
               onClick={() => router.push("/purpose-en")}
-              className="px-5 py-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full text-white tracking-widest text-sm transition-colors cursor-pointer"
+              className="px-5 py-2 bg-black/40 hover:bg-black/80 backdrop-blur-md border border-white/30 rounded-full text-white tracking-widest text-sm transition-colors cursor-pointer shadow-lg"
             >
               ENGLISH
             </button>
           </div>
 
-          <div className="text-center mb-16 z-10">
+          <div className="text-center mb-16 mt-20 z-10 px-4">
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4">
               回息解密檔案
             </h1>
             <p className="text-gray-400 tracking-[0.2em] uppercase text-sm">
-              選擇章節，深入理解大腦劫持現象
+              理解大腦劫持與命運連鎖，找回判斷主導權
             </p>
           </div>
           
-          <div className="w-full max-w-[750px] mx-auto">
+          <div className="w-full max-w-[1050px] mx-auto pb-20 px-6">
             <ChromaGrid 
               items={chapterItems} 
               onItemClick={(id) => setActiveChapter(id)} 
             />
           </div>
-        </div>
+        </NeuralBackground>
       )}
 
       {activeChapter && (
         <div className="w-full relative animation-fade-in">
-          
           <div className="fixed top-6 left-6 z-[9999]">
             <button 
               onClick={() => setActiveChapter(null)}
@@ -106,12 +138,9 @@ export default function PurposePage() {
               <span className="text-xl leading-none">←</span> 返回目錄
             </button>
           </div>
-
           {renderActiveChapter()}
-          
         </div>
       )}
-
     </main>
   );
 }

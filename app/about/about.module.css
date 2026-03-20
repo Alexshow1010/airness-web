@@ -1,0 +1,78 @@
+.container {
+  min-height: 100vh;
+  background-color: #02040a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+.nav {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.contentWrapper {
+  max-width: 42rem; /* 672px */
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  opacity: 0.85;
+  letter-spacing: 0.05em;
+  line-height: 2;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 900;
+  color: #ff4d4d;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+.highlightQuote {
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin: 2.5rem 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-style: italic;
+}
+
+.warningText {
+  color: #ffaa00;
+}
+
+.soulText {
+  color: #4da6ff;
+  font-weight: bold;
+}
+
+.actionBlock {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #ff4d4d;
+  letter-spacing: 0.1em;
+}

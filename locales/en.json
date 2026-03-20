@@ -108,7 +108,7 @@
   "coop_c6_strong": "When you act in good faith and wire the 'difference' using your own real money, the bank will then notify you that the original payment has Bounced.",
   "coop_c6_p3": "Ultimately, not only do you work for free, but you also end up paying a massive difference out of pocket to the scammers.",
 
-"privacy_title": "Privacy Policy",
+  "privacy_title": "Privacy Policy",
   "privacy_date": "Last Updated: March 2026",
   "privacy_sec1_title": "1. Information Collection and Use",
   "privacy_sec1_p": "As the official landing page for the 'AIRNESS' App, this website does not actively request personal identification. We only collect anonymous browsing data via standard analytics tools to improve user experience.",
@@ -117,4 +117,26 @@
   "privacy_sec3_title": "3. External Links",
   "privacy_sec3_p": "This website contains links to other sites (e.g., Google Play). We have no control over the content or privacy policies of those sites and encourage you to review them.",
   "privacy_sec4_title": "4. Contact Us",
-  "privacy_sec4_p": "If you have any questions about this Privacy Policy, please contact us at: oiklp1010@gmail.com"}
+  "privacy_sec4_p": "If you have any questions about this Privacy Policy, please contact us at: oiklp1010@gmail.com",
+
+  "about": {
+    "title": "About Me",
+    "p1": "I am no expert.<br/>Nor do I represent any organization.",
+    "p2": "There are no saviors here,<br/>and no one is going to take responsibility for anyone else's life.",
+    "p3": "I’m just leaving these words here.<br/>Whether you listen, whether you hit the brakes, whether you snap out of it—<br/>that’s entirely on you.",
+    "p4": "It’s just that after seeing so much over the years, some things truly leave you cold.<br/>Not because the scams are so brilliant, but because the people who fall in were usually already struggling enough.",
+    "p5": "Just wanting to make a little extra.<br/>Wanting to take some weight off the family.<br/>Wanting to quickly plug a hole.<br/>Wanting to just survive the moment.",
+    "p6": "And then what?",
+    "p7": "The hole isn't plugged, and you fall right in.<br/>Afterward comes the endless anxiety about money, family, and the judgment of others,<br/>dragging you down into an even worse hell.",
+    "p8": "So, there is no motivational bullshit here.<br/>No fake sympathy.<br/>Just laying the facts bare:",
+    "p9": "Whether you pull yourself back from the edge is your call.<br/>I’m just warning you—once you hand certain things over, the fallout is never just \"being scammed.\"",
+    "breathe": "Take a deep breath.",
+    "think": "Think clearly.",
+    "decide": "Then decide.",
+    "back": "BACK"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "about": "About Me"
+  }
+}

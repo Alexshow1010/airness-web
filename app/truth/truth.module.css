@@ -257,3 +257,21 @@
 .privacyLink:hover {
   color: rgba(255, 255, 255, 0.8);
 }
+
+/* --- 整合：關於我們連結樣式 --- */
+.aboutLinkWrapper {
+  margin-top: 16px; /* 調整與隱私連結的垂直間距 */
+  text-align: center;
+}
+
+.aboutLink {
+  color: rgba(255, 255, 255, 0.6); /* 稍微比隱私連結亮一點點，以示區別 */
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500; /* 加點粗 */
+}
+
+.aboutLink:hover {
+  color: #a387ff; /* 使用專案的主題紫色作為懸停效果，使其更突出 */
+}

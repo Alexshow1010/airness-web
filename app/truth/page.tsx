@@ -13,7 +13,7 @@ export default function TruthHubPage() {
   
   const [currentLang, setCurrentLang] = useState<Lang>(DEFAULT_LANG);
   const [mounted, setMounted] = useState(false);
-
+  
   useEffect(() => {
     setMounted(true);
     const cookie = document.cookie
@@ -184,6 +184,13 @@ export default function TruthHubPage() {
         <div className={styles.privacyLinkWrapper}>
           <a href="/privacy" className={styles.privacyLink}>
             {t("privacy_title")}
+          </a>
+        </div>
+
+        {/* --- 整合：關於我們連結 --- */}
+        <div className={styles.aboutLinkWrapper}>
+          <a href="/about" className={styles.aboutLink}>
+            {t("footer.about")}
           </a>
         </div>
       </motion.div>
