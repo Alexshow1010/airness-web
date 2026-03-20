@@ -4,9 +4,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import styles from './about.module.css';
 
-// 💥 這裡請引入你專案中用來抓取 locales 的 Hook 或 Context
-// 例如: import { useTranslation } from 'react-i18next';
-// 這裡我先模擬你的 i18n 邏輯，請依你的實際情況調整
+// 引入語系檔
 import zh from '../../locales/zh.json';
 import en from '../../locales/en.json';
 import { useState } from 'react';
@@ -14,13 +12,13 @@ import { useState } from 'react';
 export default function AboutPage() {
   const router = useRouter();
   
-  // 💥 這裡替換成你實際的語言狀態管理
+  // 語言狀態管理
   const [lang, setLang] = useState<'zh' | 'en'>('zh'); 
   const t = lang === 'zh' ? zh : en;
 
-  // 輔助函式：用來將 JSON 裡的 <br/> 轉換成實際的 HTML 換行
-  const renderHTML = (text: string) => {
-    return { __html: text };
+  // 輔助函式：處理 HTML 換行
+  const renderHTML = (text: string | undefined) => {
+    return { __html: text || "" };
   };
 
   return (
@@ -30,13 +28,13 @@ export default function AboutPage() {
       <div className={styles.nav}>
         <button 
           onClick={() => router.push('/truth')}
-          className="text-gray-400 hover:text-white transition-colors tracking-widest text-sm flex items-center gap-2"
+          className="text-gray-400 hover:text-white transition-colors tracking-widest text-sm flex items-center gap-2 cursor-pointer"
         >
           <span>←</span> {t.about.back}
         </button>
         <button 
           onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
-          className="px-4 py-1.5 border border-white/20 hover:bg-white/10 rounded-full text-xs tracking-widest transition-colors uppercase"
+          className="px-4 py-1.5 border border-white/20 hover:bg-white/10 rounded-full text-xs tracking-widest transition-colors uppercase cursor-pointer"
         >
           {lang === 'zh' ? 'ENGLISH' : '中文'}
         </button>
@@ -50,7 +48,7 @@ export default function AboutPage() {
       >
         <h1 className={styles.title}>{t.about.title}</h1>
 
-        <div>
+        <div className="space-y-6">
           <p className={styles.paragraph} dangerouslySetInnerHTML={renderHTML(t.about.p1)} />
           <p className={styles.paragraph} dangerouslySetInnerHTML={renderHTML(t.about.p2)} />
           <p className={styles.paragraph} dangerouslySetInnerHTML={renderHTML(t.about.p3)} />
@@ -70,10 +68,35 @@ export default function AboutPage() {
             <p className={`${styles.paragraph} ${styles.soulText}`} dangerouslySetInnerHTML={renderHTML(t.about.p9)} />
           </div>
 
+          {/* ================= 專案價值聲明 (致 Google 審核員) ================= */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="mt-16 p-8 border border-[#10B981]/30 bg-[#10B981]/5 rounded-2xl text-left shadow-2xl"
+          >
+            <h3 className="text-[#10B981] font-black tracking-widest text-lg mb-6 flex items-center gap-2">
+              <span className="text-2xl">🛡️</span> {t.about.statement_title}
+            </h3>
+            <div className="space-y-4 text-gray-300 text-sm md:text-base leading-relaxed font-normal">
+              <p className="flex gap-2">
+                <span className="text-[#10B981] flex-shrink-0">●</span>
+                <span dangerouslySetInnerHTML={renderHTML(t.about.statement_1)} />
+              </p>
+              <p className="flex gap-2">
+                <span className="text-[#10B981] flex-shrink-0">●</span>
+                <span dangerouslySetInnerHTML={renderHTML(t.about.statement_2)} />
+              </p>
+              <p className="flex gap-2">
+                <span className="text-[#10B981] flex-shrink-0">●</span>
+                <span dangerouslySetInnerHTML={renderHTML(t.about.statement_3)} />
+              </p>
+            </div>
+          </motion.div>
+
           <div className={styles.actionBlock}>
-            <span dangerouslySetInnerHTML={renderHTML(t.about.breathe)} />
-            <span dangerouslySetInnerHTML={renderHTML(t.about.think)} />
-            <span dangerouslySetInnerHTML={renderHTML(t.about.decide)} />
+            <span className="font-black" dangerouslySetInnerHTML={renderHTML(t.about.breathe)} />
+            <span className="font-black" dangerouslySetInnerHTML={renderHTML(t.about.think)} />
+            <span className="font-black" dangerouslySetInnerHTML={renderHTML(t.about.decide)} />
           </div>
         </div>
       </motion.div>
