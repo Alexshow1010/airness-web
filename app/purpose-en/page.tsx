@@ -10,16 +10,17 @@ import ScienceSectionEn from './ScienceSectionEn';
 import RestorationSectionEn from './RestorationSectionEn';
 import PurposeAimSectionEn from './PurposeAimSectionEn';
 import ImpactSectionEn from './ImpactSectionEn';
-// 💥 引入全新的第六章：ICA 篇英文版
 import ICASectionEn from './ICASectionEn';
-
+import ScamEqualsSectionEn from './ScamEqualsSectionEn';
+import BreathingMapSectionEn from './BreathingMapSectionEn';
+// 💥 引入第九章英文版
+import AuthorsNoteSectionEn from './AuthorsNoteSectionEn';
 import NeuralBackground from '../components/NeuralBackground';
 
 export default function PurposeEnPage() {
   const router = useRouter();
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
 
-  // 💥 擴充為 7 大章節卡片，替換了第六章的高級抽象封面
   const chapterItems: ChromaItem[] = [
     {
       id: 'purpose-aim',
@@ -77,13 +78,40 @@ export default function PurposeEnPage() {
     },
    {
       id: 'ica',
-      // 💥 換成你剛剛放進 public 的本地圖片
       image: '/ifcomeagian.png', 
-      title: 'Chapter 6: If I Had Refused', // 英文版是 'Chapter 6: If I Had Refused'
-      subtitle: 'A deep breath to pull the plug on fate。',
+      title: 'Chapter 6: If I Had Refused',
+      subtitle: 'A deep breath to pull the plug on fate.',
       handle: '06 / I.C.A',
       borderColor: '#10B981',
       gradient: 'linear-gradient(145deg, #064e3b, #000)'
+    },
+    {
+      id: 'scam-equals',
+      image: '/數位詐騙陰影笼罩專業人士.jpg', 
+      title: 'Chapter 7: Cases & Blind Spots',
+      subtitle: 'When professionals get scammed. It\'s the script, not ignorance.',
+      handle: '07 / BLIND SPOTS',
+      borderColor: '#F43F5E',
+      gradient: 'linear-gradient(145deg, #4c0519, #000)'
+    },
+    {
+      id: 'breathing-map',
+      image: '/呼吸的種類.jpg', 
+      title: 'Chapter 8: Breathing Map',
+      subtitle: 'The interface for autonomic nerves and brain states.',
+      handle: '08 / BREATHING MAP',
+      borderColor: '#2DD4BF',
+      gradient: 'linear-gradient(145deg, #0f3d3e, #000)'
+    },
+    // 💥 加入第九章卡片
+    {
+      id: 'authors-note',
+      image: '/寫作的困境與混亂.jpg', 
+      title: 'Chapter 9: Author\'s Note',
+      subtitle: 'The scam dictionary is thick enough to crush anyone.',
+      handle: '09 / AUTHOR',
+      borderColor: '#F97316',
+      gradient: 'linear-gradient(145deg, #431407, #000)'
     }
   ];
 
@@ -95,18 +123,19 @@ export default function PurposeEnPage() {
       case 'science': return <ScienceSectionEn />;
       case 'restoration': return <RestorationSectionEn />;
       case 'impact': return <ImpactSectionEn />;
-      case 'ica': return <ICASectionEn />; // 💥 渲染第六章
+      case 'ica': return <ICASectionEn />;
+      case 'scam-equals': return <ScamEqualsSectionEn />;
+      case 'breathing-map': return <BreathingMapSectionEn />;
+      // 💥 渲染第九章
+      case 'authors-note': return <AuthorsNoteSectionEn />;
       default: return null;
     }
   };
 
   return (
     <main className="w-full min-h-screen bg-[#02040a] relative">
-      
-      {/* ================= 大廳視圖 (未選擇章節時) ================= */}
       {!activeChapter && (
         <NeuralBackground className="min-h-screen w-full flex flex-col relative animation-fade-in">
-          
           <div className="fixed top-10 right-10 z-[9999]">
             <button
               onClick={() => router.push("/purpose")}
@@ -134,10 +163,8 @@ export default function PurposeEnPage() {
         </NeuralBackground>
       )}
 
-      {/* ================= 章節內容視圖 (已選擇章節時) ================= */}
       {activeChapter && (
         <div className="w-full relative animation-fade-in">
-          
           <div className="fixed top-6 left-6 z-[9999]">
             <button 
               onClick={() => setActiveChapter(null)}
@@ -146,12 +173,9 @@ export default function PurposeEnPage() {
               <span className="text-xl leading-none">←</span> BACK
             </button>
           </div>
-
           {renderActiveChapter()}
-          
         </div>
       )}
-
     </main>
   );
 }

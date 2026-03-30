@@ -12,6 +12,10 @@ import ImpactSection from '../components/ImpactSection';
 import NeuralBackground from '../components/NeuralBackground';
 import PurposeAimSection from '../components/PurposeAimSection'; 
 import ICASection from './ICASection';
+import ScamEqualsSection from './ScamEqualsSection';
+import BreathingMapSection from './BreathingMapSection';
+// 💥 引入第九章
+import AuthorsNoteSection from './AuthorsNoteSection';
 
 export default function PurposePage() {
   const router = useRouter(); 
@@ -74,13 +78,40 @@ export default function PurposePage() {
     },
     {
       id: 'ica',
-      // 💥 換成你剛剛放進 public 的本地圖片
       image: '/ifcomeagian.png', 
-      title: '第六章：如果那天我拒絕了', // 英文版是 'Chapter 6: If I Had Refused'
+      title: '第六章：如果那天我拒絕了',
       subtitle: '那一秒深呼吸，強行拉開命運的活栓。',
       handle: '06 / I.C.A',
       borderColor: '#10B981',
       gradient: 'linear-gradient(145deg, #064e3b, #000)'
+    },
+    {
+      id: 'scam-equals',
+      image: '/數位詐騙陰影笼罩專業人士.jpg', 
+      title: '第七章：案例與盲區',
+      subtitle: '當工程師、專業人士也被騙。不是不懂，是劇本太深。',
+      handle: '07 / BLIND SPOTS',
+      borderColor: '#F43F5E',
+      gradient: 'linear-gradient(145deg, #4c0519, #000)'
+    },
+    {
+      id: 'breathing-map',
+      image: '/呼吸的種類.jpg', 
+      title: '第八章：回息呼吸地圖',
+      subtitle: '把呼吸這件事講清楚，自律神經與大腦狀態的切換介面。',
+      handle: '08 / BREATHING MAP',
+      borderColor: '#2DD4BF',
+      gradient: 'linear-gradient(145deg, #0f3d3e, #000)'
+    },
+    // 💥 加入第九章卡片
+    {
+      id: 'authors-note',
+      image: '/寫作的困境與混亂.jpg', 
+      title: '第九章：作者的碎碎念',
+      subtitle: '不是資訊不夠，是詐騙字典早就厚到能砸死人。',
+      handle: '09 / AUTHOR',
+      borderColor: '#F97316', // 暖橘色，象徵作者的憤怒與溫度
+      gradient: 'linear-gradient(145deg, #431407, #000)'
     }
   ];
 
@@ -93,6 +124,10 @@ export default function PurposePage() {
       case 'restoration': return <RestorationSection />;
       case 'impact': return <ImpactSection />;
       case 'ica': return <ICASection />;
+      case 'scam-equals': return <ScamEqualsSection />;
+      case 'breathing-map': return <BreathingMapSection />;
+      // 💥 渲染第九章
+      case 'authors-note': return <AuthorsNoteSection />;
       default: return null;
     }
   };
@@ -111,7 +146,7 @@ export default function PurposePage() {
           </div>
 
           <div className="text-center mb-16 mt-20 z-10 px-4">
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4">
+            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4 uppercase">
               回息解密檔案
             </h1>
             <p className="text-gray-400 tracking-[0.2em] uppercase text-sm">
